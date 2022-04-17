@@ -1,14 +1,16 @@
 const express = require("express");
+const multer = require("multer");
+const ejs = require("ejs");
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
-const multer = require("multer");
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "files");
+		cb(null, "./public/files");
 	},
 	filename: (req, file, cb) => {
-		console.log(file);
 		cb(null, file.originalname);
 	},
 });
@@ -17,8 +19,13 @@ const upload = multer({ storage: storage });
 
 app.set("view engine", "ejs");
 
+app.use(express.static("public"));
+
 app.get("/upload", (req, res) => {
-	res.render("upload");
+	const filesFolder = "./public/files";
+	const fileList = fs.readdirSync(filesFolder);
+	// fileList passed in via ejs object
+	res.render("upload", { fileList: fileList });
 });
 
 app.post("/upload", upload.single("file"), (req, res) => {
