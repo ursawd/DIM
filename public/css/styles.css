@@ -1,0 +1,15 @@
+header {
+	background-color: steelblue;
+	padding: 40px;
+}
+h1 {
+	color: white;
+	font-family: "Moon Dance", cursive;
+	font-weight: 900;
+}
+.btn-primary {
+	background-color: steelblue;
+}
+form {
+	padding-top: 15px;
+}
