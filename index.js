@@ -17,6 +17,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+const admin = false;
+
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname + "/public"));

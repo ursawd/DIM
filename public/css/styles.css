@@ -1,3 +1,9 @@
+:root {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 header {
 	background-color: steelblue;
 	padding: 40px;
@@ -11,5 +17,7 @@ h1 {
 	background-color: steelblue;
 }
 form {
-	padding-top: 15px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 0.75rem;
+	font-weight: bolder;
 }
