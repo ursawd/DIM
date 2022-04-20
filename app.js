@@ -36,6 +36,4 @@ app.post("/", upload.single("file"), (req, res) => {
 	res.redirect("/");
 });
 
-app.listen(3001, () => {
-	console.log("Server running: port 3001");
-});
+app.listen();
