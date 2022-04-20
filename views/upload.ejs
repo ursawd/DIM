@@ -6,27 +6,31 @@
     <h1><i class="fa fa-video-camera" aria-hidden="true"></i> DEVOTION IN MOTION</h1>
 
 
-    <div class="d-none mb-5" id="uploadForm">
+    <div class="d-none" id="uploadForm">
       <p class="m-0 p-0 text-white">Upload File:</p>
       <form class="text-white" action="/upload" method='POST' enctype='multipart/form-data'>
         <input type="file" name="file">
         <input type="submit" value="Upload">
       </form>
     </div>
-    <button onclick="makeFormVisable()" class="btn btn-primary">Enter Password To Upload File</button>
-    <input type="text" name="isAdmin" id="isAdmin">
+    <div id="passwordDiv">
+      <button onclick="makeFormVisable()" class="btn btn-primary">Enter Password To Upload File</button>
+      <input type="text" name="isAdmin" id="isAdmin">
+    </div>
   </header>
   <section class="container mt-5">
     <div class="row">
       <!--  fileList passed in via EJS object-->
       <!--  res.render("upload", { fileList: fileList });-->
       <% fileList.forEach((file)=>{%>
-        <div class="col-lg-6 border" style="height:300px">
-          <div class="text-center ">
-            <video id='<%= file%>' controls width="300">
-              <source src="/files/<%= file%>" type="video/mp4">
+        <div class="col-lg-6 border" style="height:350px">
+          <div class="text-center mt-4">
+            <video id='<%= file%>' controls width="350">
+              <!-- src="/files/<%= file%>#t=1.5  starts 1.5 sec from beginning-->
+              <source src="/files/<%= file%>#t=1.5" type="video/mp4">
             </video>
             <div>
+              <a href="/files/<%= file%>" class='d-block' download>Download <%= file%></a>
               <button onclick="enlarge('<%= file%>')" class="btn btn-primary">Change to full screen</button>
             </div>
           </div>

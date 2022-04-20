@@ -32,7 +32,8 @@ app.get("/upload", (req, res) => {
 });
 
 app.post("/upload", upload.single("file"), (req, res) => {
-	res.send("File Uploaded");
+	// uploads file and then displays video files
+	res.redirect("/upload");
 });
 
 app.listen(3001, () => {
