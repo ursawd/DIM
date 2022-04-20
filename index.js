@@ -24,16 +24,16 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // app.use(express.static("public"));
 
-app.get("/upload", (req, res) => {
+app.get("/", (req, res) => {
 	const filesFolder = "./public/files";
 	const fileList = fs.readdirSync(filesFolder);
 	// fileList passed in via ejs object
 	res.render("upload", { fileList: fileList });
 });
 
-app.post("/upload", upload.single("file"), (req, res) => {
+app.post("/", upload.single("file"), (req, res) => {
 	// uploads file and then displays video files
-	res.redirect("/upload");
+	res.redirect("/");
 });
 
 app.listen(3001, () => {
