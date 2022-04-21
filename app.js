@@ -11,7 +11,7 @@ const app = express();
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "./public/files");
+		cb(null, "./public/videos");
 	},
 	filename: (req, file, cb) => {
 		cb(null, file.originalname);
@@ -28,7 +28,7 @@ app.use(express.static(__dirname + "/public"));
 // app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-	const filesFolder = "./public/files";
+	const filesFolder = "./public/videos";
 	const fileList = fs.readdirSync(filesFolder);
 	// fileList passed in via ejs object
 	res.render("upload", { fileList: fileList });
