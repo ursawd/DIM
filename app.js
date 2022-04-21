@@ -4,6 +4,9 @@ const ejs = require("ejs");
 const path = require("path");
 const fs = require("fs");
 
+require("dotenv").config();
+const port = process.env.PORT || null;
+
 const app = express();
 
 const storage = multer.diskStorage({
@@ -36,4 +39,10 @@ app.post("/", upload.single("file"), (req, res) => {
 	res.redirect("/");
 });
 
-app.listen();
+if (port) {
+	app.listen(port, "localhost", () => {
+		console.log(`Listening on ${port}`);
+	});
+} else {
+	app.listen();
+}
