@@ -1,0 +1,50 @@
+<%- include('header') %>
+  <!-- -------------------------------------------------------------- -->
+
+  <header class="container">
+
+    <h1><i class="fa fa-video-camera" aria-hidden="true"></i> DEVOTION IN MOTION</h1>
+
+    <div class="d-none" id="uploadForm">
+      <p class="m-0 p-0 text-white">Upload File:</p>
+      <form class="text-white" action="/files" method='POST' enctype='multipart/form-data'>
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+        <div>
+        </div>
+      </form>
+    </div>
+    <div id="passwordDiv">
+      <button onclick="makeFormVisable()" class="btn btn-primary">Enter Password To Upload File</button>
+      <input type="text" name="isAdmin" id="isAdmin">
+    </div>
+    <div class="mt-4">
+      <a href="/"><button class="btn btn-light">
+          Video Files
+        </button></a>
+      <a href="/files"><button class="btn btn-light">
+          Other Files
+        </button></a>
+    </div>
+
+  </header>
+  <section class="container mt-5">
+    <h3>Click to download file</h3>
+    <div class="row">
+      <!--  fileList passed in via EJS object-->
+      <!--  res.render("upload", { fileList: fileList });-->
+      <% fileList.forEach((file)=>{%>
+        <div class="text-center mt-4">
+          <div>
+            <a href="/files/<%= file%>" class='d-block' download>
+              <%= file%>
+            </a>
+          </div>
+        </div>
+        <%}) %>
+    </div>
+  </section>
+
+
+  <!-- -------------------------------------------------------------- -->
+  <%- include('footer') %>
