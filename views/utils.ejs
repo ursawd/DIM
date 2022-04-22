@@ -4,10 +4,17 @@
     element.requestFullscreen()
   }
   const makeFormVisable = function () {
-    const formDiv = document.getElementById('uploadForm')
-    formDiv.classList.remove('d-none')
-    const passwordDiv = document.getElementById('passwordDiv')
-    passwordDiv.classList.add('d-none')
+
+    const passwordEntered = document.getElementById('isAdmin')
+    if (passwordEntered.value === "DIM") {
+      const formDiv = document.getElementById('uploadForm')
+      formDiv.classList.remove('d-none')
+      const passwordDiv = document.getElementById('passwordDiv')
+      passwordDiv.classList.add('d-none')
+    } else {
+      passwordEntered.value = "Invalid password"
+    }
+
   }
   const checkMP4 = function () {
     const fileName = document.getElementById("fileName")
