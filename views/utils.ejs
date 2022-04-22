@@ -9,4 +9,13 @@
     const passwordDiv = document.getElementById('passwordDiv')
     passwordDiv.classList.add('d-none')
   }
+  const checkMP4 = function () {
+    const fileName = document.getElementById("fileName")
+    const suffix = fileName.value.slice(-3)
+    if (suffix !== 'mp4') {
+      const errorLabel = document.getElementById("errorLabel")
+      errorLabel.innerText = "Only MP4 files allowed"
+      return false
+    }
+  }
 </script>
