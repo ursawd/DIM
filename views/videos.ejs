@@ -13,8 +13,8 @@
         <input type="submit" value="Upload">
         <label id="errorLabel" class="text-danger bg-warning"></label>
         <div>
-          <input class="mt-3" type="checkbox" checked name="fileType" id="fileType">
-          <label for="fileType">Check to upload video file(mp4 only)</label>
+          <!-- <input class="mt-3" type="checkbox" checked name="fileType" id="fileType"> -->
+          <label for="fileType">Upload video file(mp4 only)</label>
         </div>
       </form>
     </div>
@@ -32,6 +32,8 @@
     </div>
   </header>
   <section class="container mt-5">
+    <h3>Video Files:</h3>
+    <p>Click on video to play</p>
     <div class="row">
       <!--  fileList passed in via EJS object-->
       <!--  res.render("upload", { fileList: fileList });-->
@@ -46,6 +48,7 @@
               <div>
                 <a href="/videos/<%= file%>" class='d-block' download>Download <%= file%></a>
                 <button onclick="enlarge('<%= file%>')" class="btn btn-primary">Change to full screen</button>
+                <a href="/videos/delete/<%= file%>" class="btn btn-dark">Delete</a>
               </div>
             </div>
           </div>

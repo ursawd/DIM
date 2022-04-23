@@ -63,6 +63,15 @@ app.post("/files", uploadFile.single("file"), (req, res) => {
 });
 
 // -------------------------------------------------
+app.get("/videos/delete/:fname", (req, res) => {
+	console.log(req.params.fname);
+	fs.unlink(`./public/videos/${req.params.fname}`, err => {
+		if (err) console.log(err);
+	});
+	res.redirect("/");
+});
+
+// -------------------------------------------------
 
 if (port) {
 	app.listen(port, "localhost", () => {
